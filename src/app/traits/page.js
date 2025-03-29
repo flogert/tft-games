@@ -17,13 +17,15 @@ export default function TraitsGame() {
   const correctSound = useRef(null);
   const incorrectSound = useRef(null);
 
-  // Preload sound effects
+  // Initialize audio only on the client side
   useEffect(() => {
-    correctSound.current = new Audio('/sounds/correct.mp4');
-    incorrectSound.current = new Audio('/sounds/incorrect.mp4');
-    correctSound.current.volume = 0.6;
-    incorrectSound.current.volume = 0.6;
-  }, []);
+    if (typeof window !== 'undefined') {
+      correctSound.current = new Audio('/sounds/correct.mp4');
+      incorrectSound.current = new Audio('/sounds/incorrect.mp4');
+      correctSound.current.volume = 0.6;
+      incorrectSound.current.volume = 0.6;
+    }
+  }, []); // Runs only once after the component mounts, which avoids SSR issues
 
   // Fetch trait data once
   useEffect(() => {
@@ -98,11 +100,11 @@ export default function TraitsGame() {
       if (guess === correctAnswer) {
         setScore((prev) => prev + 1);
         setIsCorrect(true);
-        correctSound.current.play();
+        if (correctSound.current) correctSound.current.play();
         setTimeout(pickRandomTrait, 500);
       } else {
         setIsCorrect(false);
-        incorrectSound.current.play();
+        if (incorrectSound.current) incorrectSound.current.play();
       }
     },
     [userGuess, randomTrait, pickRandomTrait, timerStarted]

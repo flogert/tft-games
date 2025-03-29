@@ -41,7 +41,6 @@ export default function AugmentsGame() {
     if (timeRemaining === 0) {
       setGameOver(true);
       setTimerStarted(false);
-      // Save score to high scores if the game is over
       setHighScores((prevScores) => [...prevScores, score].sort((a, b) => b - a).slice(0, 6));
     }
   }, [timeRemaining]);
@@ -61,7 +60,6 @@ export default function AugmentsGame() {
 
       img.onload = () => {
         setRandomAugment(randomAugment);
-        console.log(randomAugment.name);
         setUserGuess('');
         setIsCorrect(null);
       };
@@ -72,9 +70,11 @@ export default function AugmentsGame() {
   };
 
   const playSound = (correct) => {
-    const sound = new Audio(correct ? '/sounds/correct.mp4' : '/sounds/incorrect.mp4');
-    sound.volume = 0.6;
-    sound.play();
+    if (typeof window !== 'undefined') {
+      const sound = new Audio(correct ? '/sounds/correct.mp4' : '/sounds/incorrect.mp4');
+      sound.volume = 0.6;
+      sound.play();
+    }
   };
 
   const handleSubmit = (e) => {
@@ -174,17 +174,6 @@ export default function AugmentsGame() {
             </div>
           </div>
         )}
-      </div>
-
-      <div className="w-64 h-min p-6 bg-slate-900 bg-opacity-60 text-white text-center rounded-lg shadow-lg ml-[24px]">
-        <h2 className="text-xl font-semibold mb-4">High Scores</h2>
-        <ul>
-          {highScores.map((score, index) => (
-            <li key={index} className="text-lg bg-slate-950 rounded-lg mb-2">
-              {score}
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );
