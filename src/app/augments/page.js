@@ -175,6 +175,17 @@ export default function AugmentsGame() {
           </div>
         )}
       </div>
+
+      <div className="w-64 h-min p-6 bg-slate-900 bg-opacity-60 text-white text-center rounded-lg shadow-lg ml-[24px]">
+        <h2 className="text-xl font-semibold mb-4">High Scores</h2>
+        <ul>
+          {highScores.map((score, index) => (
+            <li key={index} className="text-lg bg-slate-950 rounded-lg mb-2">
+              {score}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
