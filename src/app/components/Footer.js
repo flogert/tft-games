@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
-      <footer className="text-center py-4 bg-gray-800 text-gray-400">
-        <p>&copy; 2025 TFT Guessing Game. All rights reserved.</p>
+      <footer className="text-center py-6 bg-gaming-dark border-t border-slate-800 text-slate-500 text-sm">
+        <p>&copy; 2025 TFTdle. All rights reserved.</p>
       </footer>
     );
   }
