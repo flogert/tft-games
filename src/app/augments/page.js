@@ -113,31 +113,33 @@ export default function AugmentsGame() {
       />
       <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-purple-950/80 to-blue-950/90 z-0" />
 
-      <div className="relative z-10 flex justify-center pt-24 gap-6 px-4">
+      <div className="relative z-10 flex flex-col lg:flex-row justify-center pt-12 lg:pt-24 gap-6 px-4 pb-12">
         {/* Left Panel */}
         <motion.div 
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="w-64 h-min p-6 bg-slate-900/60 backdrop-blur-md border border-purple-500/30 text-white text-center rounded-xl shadow-lg"
+          className="w-full lg:w-64 h-min p-6 bg-slate-900/60 backdrop-blur-md border border-purple-500/30 text-white text-center rounded-xl shadow-lg order-2 lg:order-1"
         >
           <h2 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-purple-300">Other Games</h2>
-          <Link href="/tacticians">
-            <motion.div 
-              whileHover={{ scale: 1.05, backgroundColor: "rgba(59, 130, 246, 0.2)" }}
-              className="text-center rounded-lg text-blue-100 p-3 mb-4 border border-blue-500/30 bg-slate-800/50 font-semibold cursor-pointer transition-colors"
-            >
-              Tacticians
-            </motion.div>
-          </Link>
-          <Link href="/traits">
-            <motion.div 
-              whileHover={{ scale: 1.05, backgroundColor: "rgba(168, 85, 247, 0.2)" }}
-              className="text-center rounded-lg text-purple-100 p-3 border border-purple-500/30 bg-slate-800/50 font-semibold cursor-pointer transition-colors"
-            >
-              Traits
-            </motion.div>
-          </Link>
+          <div className="flex lg:flex-col gap-4 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
+            <Link href="/tacticians" className="flex-1 min-w-[120px]">
+              <motion.div 
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(59, 130, 246, 0.2)" }}
+                className="text-center rounded-lg text-blue-100 p-3 border border-blue-500/30 bg-slate-800/50 font-semibold cursor-pointer transition-colors h-full flex items-center justify-center"
+              >
+                Tacticians
+              </motion.div>
+            </Link>
+            <Link href="/traits" className="flex-1 min-w-[120px]">
+              <motion.div 
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(168, 85, 247, 0.2)" }}
+                className="text-center rounded-lg text-purple-100 p-3 border border-purple-500/30 bg-slate-800/50 font-semibold cursor-pointer transition-colors h-full flex items-center justify-center"
+              >
+                Traits
+              </motion.div>
+            </Link>
+          </div>
         </motion.div>
 
         {/* Main Game Area */}
@@ -145,24 +147,24 @@ export default function AugmentsGame() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative flex flex-col items-center bg-slate-900/70 backdrop-blur-md border border-blue-500/20 p-8 rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.15)] w-[600px] min-h-[600px]"
+          className="relative flex flex-col items-center bg-slate-900/70 backdrop-blur-md border border-blue-500/20 p-4 md:p-8 rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.15)] w-full max-w-[600px] min-h-[500px] order-1 lg:order-2"
         >
           {/* Header Elements */}
-          <div className="w-full flex justify-between items-center mb-8">
-            <div className="px-4 py-2 rounded-full bg-slate-800/80 border border-blue-500/30 text-blue-300 font-bold shadow-inner">
+          <div className="w-full flex justify-between items-center mb-8 gap-2">
+            <div className="px-3 py-1 md:px-4 md:py-2 text-sm md:text-base rounded-full bg-slate-800/80 border border-blue-500/30 text-blue-300 font-bold shadow-inner">
               Score: {score}
             </div>
             
             <Link href="/">
               <motion.div 
                 whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
-                className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-blue-400 to-purple-400 cursor-pointer filter drop-shadow-lg"
+                className="text-2xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-blue-400 to-purple-400 cursor-pointer filter drop-shadow-lg"
               >
                 TFTdle
               </motion.div>
             </Link>
 
-            <div className={`px-4 py-2 rounded-full border font-bold shadow-inner transition-colors duration-300 ${
+            <div className={`px-3 py-1 md:px-4 md:py-2 text-sm md:text-base rounded-full border font-bold shadow-inner transition-colors duration-300 ${
               timeRemaining <= 15 
                 ? 'bg-red-900/50 border-red-500 text-red-300 animate-pulse' 
                 : 'bg-slate-800/80 border-yellow-500/30 text-yellow-300'
@@ -284,10 +286,10 @@ export default function AugmentsGame() {
           initial={{ x: 50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="w-64 h-min p-6 bg-slate-900/60 backdrop-blur-md border border-blue-500/30 text-white text-center rounded-xl shadow-lg"
+          className="w-full lg:w-64 h-min p-6 bg-slate-900/60 backdrop-blur-md border border-blue-500/30 text-white text-center rounded-xl shadow-lg order-3"
         >
           <h2 className="text-xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-cyan-300">High Scores</h2>
-          <ul className="space-y-2">
+          <ul className="space-y-2 flex flex-col items-center lg:items-stretch">
             {highScores.length === 0 && <li className="text-gray-500 italic text-sm">No scores yet</li>}
             {highScores.map((score, index) => (
               <motion.li 
@@ -295,7 +297,7 @@ export default function AugmentsGame() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex justify-between items-center px-4 py-2 bg-slate-800/50 rounded-lg border border-slate-700/50"
+                className="flex justify-between items-center px-4 py-2 bg-slate-800/50 rounded-lg border border-slate-700/50 w-full max-w-[200px] lg:max-w-none"
               >
                 <span className="text-gray-400 text-sm">#{index + 1}</span>
                 <span className="font-bold text-yellow-400">{score}</span>
