@@ -83,7 +83,7 @@ export default function HomePage() {
             animate={{ y: 0, opacity: 1 }}
             whileHover={{ scale: 1.1, rotate: [0, -2, 2, 0] }}
             transition={{ duration: 0.8, type: "spring" }}
-            className="text-7xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-blue-400 to-purple-400 drop-shadow-lg cursor-pointer"
+            className="text-5xl md:text-7xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-blue-400 to-purple-400 drop-shadow-lg cursor-pointer text-center"
           >
             TFTdle
           </motion.h1>
