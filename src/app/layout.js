@@ -1,5 +1,12 @@
+import { Ysabeau_SC } from 'next/font/google';
 import './styles/globals.css';
 import { Analytics } from "@vercel/analytics/next"
+
+const ysabeau = Ysabeau_SC({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-ysabeau',
+});
 
 export const metadata = {
   title: 'TFTdle',
@@ -9,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={ysabeau.variable}>{children}</body>
     </html>
   );
 }
