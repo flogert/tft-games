@@ -1,4 +1,5 @@
 import { Ysabeau_SC } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import './styles/globals.css';
 
 const ysabeau = Ysabeau_SC({
@@ -15,7 +16,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={ysabeau.variable}>{children}</body>
+      <body className={ysabeau.variable}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
