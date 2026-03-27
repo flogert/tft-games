@@ -1,6 +1,5 @@
 import { Ysabeau_SC } from 'next/font/google';
 import './styles/globals.css';
-import { Analytics } from "@vercel/analytics/next"
 
 const ysabeau = Ysabeau_SC({
   subsets: ['latin'],
